@@ -1,0 +1,13 @@
+#!/bin/bash -eu
+
+# gitのhookはリポジトリのルートディレクトリで実行される
+# https://git-scm.com/docs/githooks
+
+# 仮想環境のロード
+source ./venv/bin/activate
+
+# フォーマッター、リンター、型チェックの実行
+isort .
+black .
+flake8 .
+mypy .
