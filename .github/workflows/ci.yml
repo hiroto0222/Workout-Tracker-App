@@ -23,8 +23,11 @@ jobs:
     steps:
       - name: Create app/.envs/.local/.app & app/.envs/.local/.postgres
         run: |
+          mkdir -p app/.envs/.local
+          touch app/.envs/.local/.app
           echo "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> app/.envs/.local/.app
           echo "USE_DOCKER=${{ secrets.USE_DOCKER }}" >> app/.envs/.local/.app
+          touch app/.envs/.local/.postgres
           echo "POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}" >> app/.envs/.local/.postgres
           echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> app/.envs/.local/.postgres
           echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> app/.envs/.local/.postgres
