@@ -1,0 +1,35 @@
+version: "3"
+
+volumes:
+  workout_tracker_app_local_postgres_data: {}
+  workout_tracker_app_local_postgres_data_backups: {}
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./compose/local/app/Dockerfile
+    image: workout_tracker_app_local_app
+    container_name: workout_tracker_app_local_app
+    depends_on:
+      - postgres
+    volumes:
+      - ./app:/app:z
+    env_file:
+      - app/.envs/.local/.app
+      - app/.envs/.local/.postgres
+    ports:
+      - "8000:8000"
+    command: /start
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: workout_tracker_app_production_postgres
+    container_name: workout_tracker_app_local_postgres
+    volumes:
+      - workout_tracker_app_local_postgres_data:/var/lib/postgresql/data
+      - workout_tracker_app_local_postgres_data_backups:/backups
+    env_file:
+      - app/.envs/.local/.postgres
