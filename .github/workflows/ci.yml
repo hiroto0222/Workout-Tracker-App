@@ -19,8 +19,18 @@ concurrency:
 jobs:
   pytest:
     runs-on: ubuntu-latest
-
+    environment: Local
     steps:
+      - name: Create app/.envs/.local/.app & app/.envs/.local/.postgres
+        run: |
+          echo "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> app/.envs/.local/.app
+          echo "USE_DOCKER=${{ secrets.USE_DOCKER }}" >> app/.envs/.local/.app
+          echo "POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}" >> app/.envs/.local/.postgres
+          echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> app/.envs/.local/.postgres
+          echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> app/.envs/.local/.postgres
+          echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> app/.envs/.local/.postgres
+          echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> app/.envs/.local/.postgres
+
       - name: Checkout Code Repository
         uses: actions/checkout@v3
 
