@@ -47,7 +47,10 @@ plugins = [
 
 [[tool.mypy.overrides]]
 # Django migrations should not produce any errors:
-module = "*.migrations.*"
+module = [
+    "*.migrations.*",
+    "*.settings.*",
+]
 ignore_errors = true
 
 [tool.django-stubs]
