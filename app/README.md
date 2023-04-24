@@ -9,3 +9,7 @@ docker-compose -f local.yml build
 ```sh
 docker-compose -f local.yml run --rm app bash
 ```
+#### run tests using pytest
+```sh
+docker-compose -f local.yml run --rm app pytest
+```
