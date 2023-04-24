@@ -21,6 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: Local
     steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v3
+
       - name: Create app/.envs/.local/.app & app/.envs/.local/.postgres
         run: |
           mkdir -p app/.envs/.local
@@ -34,8 +37,7 @@ jobs:
           echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> app/.envs/.local/.postgres
           echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> app/.envs/.local/.postgres
 
-      - name: Checkout Code Repository
-        uses: actions/checkout@v3
+      - run: ls
 
       - name: Build the Stack
         run: docker-compose -f local.yml build
