@@ -2,8 +2,9 @@
 Tests for core.models
 """
 
-from core import models
 from django.test import TestCase
+
+from core import models
 
 
 class ModelTests(TestCase):
