@@ -1,17 +1,12 @@
 """
-Models for the core app
+Models for the core app.
 """
 
 from django.db import models
 
 
 class Exercise(models.Model):
-    """Exercise model
-
-    Attributes:
-        name (str): Name of the exercise
-        description (str): Description of the exercise
-    """
+    """Exercise object"""
 
     BODY_PARTS = (
         ("Forearms", "Forearms"),
@@ -41,8 +36,8 @@ class Exercise(models.Model):
 
     name = models.CharField(max_length=255)
     description = models.TextField()
-    body_part = models.CharField(max_length=16, choices=BODY_PARTS)
     equipment = models.CharField(max_length=16, choices=EQUIPMENT)
+    body_part = models.CharField(max_length=16, choices=BODY_PARTS)
 
     def __str__(self):
-        return f"Exercise(body_part={self.body_part}, equipment={self.equipment}, name={self.name}')"
+        return self.name
