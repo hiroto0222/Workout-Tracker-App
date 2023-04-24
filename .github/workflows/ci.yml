@@ -37,16 +37,14 @@ jobs:
           echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> app/.envs/.local/.postgres
           echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> app/.envs/.local/.postgres
 
-      - run: ls
-
       - name: Build the Stack
         run: docker-compose -f local.yml build
 
       - name: Run DB Migrations
-        run: docker-compose -f local.yml run --rm django python manage.py migrate
+        run: docker-compose -f local.yml run --rm app python manage.py migrate
 
       - name: Run Django Tests
-        run: docker-compose -f local.yml run django pytest
+        run: docker-compose -f local.yml run app pytest
 
       - name: Tear down the Stack
         run: docker-compose -f local.yml down
