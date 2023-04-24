@@ -2,8 +2,9 @@
 Serializers for core app.
 """
 
-from core.models import Exercise
 from rest_framework import serializers
+
+from core.models import Exercise
 
 
 class ExerciseSerializer(serializers.ModelSerializer):
