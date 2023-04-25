@@ -2,7 +2,10 @@
 Models for the core app.
 """
 
+from typing import List
+
 from django.db import models
+from django.utils.functional import classproperty
 
 
 class Exercise(models.Model):
@@ -38,6 +41,14 @@ class Exercise(models.Model):
     description = models.TextField()
     equipment = models.CharField(max_length=16, choices=EQUIPMENT)
     body_part = models.CharField(max_length=16, choices=BODY_PARTS)
+
+    @classproperty
+    def body_part_options(self) -> List[str]:
+        return [x[0] for x in self.BODY_PARTS]
+
+    @classproperty
+    def equipment_options(self) -> List[str]:
+        return [x[0] for x in self.EQUIPMENT]
 
     def __str__(self):
         return self.name
