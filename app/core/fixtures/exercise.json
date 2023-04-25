@@ -18,5 +18,35 @@
       "name": "Dumbbell Bench Press",
       "description": ""
     }
+  },
+  {
+    "model": "core.exercise",
+    "pk": 3,
+    "fields": {
+      "body_part": "Back",
+      "equipment": "Barbell",
+      "name": "Deadlift",
+      "description": ""
+    }
+  },
+  {
+    "model": "core.exercise",
+    "pk": 4,
+    "fields": {
+      "body_part": "Back",
+      "equipment": "Machine",
+      "name": "Pull Up",
+      "description": ""
+    }
+  },
+  {
+    "model": "core.exercise",
+    "pk": 5,
+    "fields": {
+      "body_part": "Shoulders",
+      "equipment": "Dumbbell",
+      "name": "Shoulder Press",
+      "description": ""
+    }
   }
 ]
